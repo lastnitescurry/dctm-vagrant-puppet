@@ -1,0 +1,15 @@
+---
+
+:backends:
+  - yaml
+
+:yaml:
+  :datadir: "/tmp/vagrant-puppet/hiera"
+
+:hierarchy:
+  - "hosts/%{hostname}"
+#  - "roles/%{role}"
+#  - "%{operatingsystem}"
+  - common
+
+:merge_behavior: deeper

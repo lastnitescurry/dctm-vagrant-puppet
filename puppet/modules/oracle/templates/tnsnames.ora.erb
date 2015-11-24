@@ -1,0 +1,10 @@
+# tnsnames.ora Network Configuration File:
+
+XE =
+  (DESCRIPTION =
+    (ADDRESS = (PROTOCOL = TCP)(HOST = $hostname)(PORT = $port))
+    (CONNECT_DATA =
+      (SERVER = DEDICATED)
+      (SERVICE_NAME = XE)
+    )
+  )

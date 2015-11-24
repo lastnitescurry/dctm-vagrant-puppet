@@ -1,0 +1,18 @@
+---
+
+oracle::xe::server::http_port:    '1521'
+oracle::xe::server::listner_port: '8080'
+oracle::xe::server::password:     'manager'
+oracle::xe::server::dbenable:     'y'
+
+groups:
+  dba2:
+    ensure:     present
+
+users:
+  oracle2:
+    ensure:     present
+    managehome: true
+    gid:        dba
+
+#packages:
