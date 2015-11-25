@@ -93,7 +93,7 @@ packages:
     ensure:     installed
   git:
     ensure:     installed
-  subversion:
+  unzip:
     ensure:     installed
   jdk1.8.0_65:
     ensure:     installed
@@ -163,6 +163,12 @@ files:
     owner:      tomcat
     group:      tomcat
     mode:       '775'
+  '/home/tomcat/apache-tomcat':
+    ensure:     link
+    owner:      tomcat
+    group:      tomcat
+    mode:       '775'
+    target:     '/u01/app/apache-tomcat'
 
 # Oracle Client settings for Documentum Content Servers
 oracle::xe::client::db_port: '1521'

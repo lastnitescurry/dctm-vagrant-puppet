@@ -20,9 +20,9 @@ domain   = 'farrengold.ie'
 
 nodes = [
  { :gport => '8080', :hport => '8080',  :hostname => 'database',  :ip => '192.168.100.10', :box => 'nrel/CentOS-6.7-x86_64', :ram => '2048', :cpus => '2', :desc => 'Centos 6.6 - Database Server'},
- { :gport => '8080', :hport => '8081',  :hostname => 'appsservr', :ip => '192.168.100.20', :box => 'nrel/CentOS-6.7-x86_64', :ram => '1024', :cpus => '1', :desc => 'Centos 7.0 - Puppet 4.2.1 - Application Server'},
-# { :gport => '9080', :hport => '29080', :hostname => 'csnode',    :ip => '192.168.100.31', :box => 'nrel/CentOS-6.6-x86_64', :ram => '4096', :cpus => '2', :desc => 'Centos 6.6 - Content Server'},
- { :gport => '9080', :hport => '19080', :hostname => 'csmaster',  :ip => '192.168.100.30', :box => 'nrel/CentOS-6.6-x86_64', :ram => '4096', :cpus => '2', :desc => 'Centos 6.6 - Content Server'},
+ { :gport => '8080', :hport => '8081',  :hostname => 'appsservr', :ip => '192.168.100.20', :box => 'nrel/CentOS-6.7-x86_64', :ram => '1024', :cpus => '1', :desc => 'Centos 6.7 - Application Server'},
+#{ :gport => '9080', :hport => '29080', :hostname => 'csnode',    :ip => '192.168.100.31', :box => 'nrel/CentOS-6.6-x86_64', :ram => '4096', :cpus => '2', :desc => 'Centos 6.6 - Content Server'},
+ { :gport => '9080', :hport => '19080', :hostname => 'csmaster',  :ip => '192.168.100.30', :box => 'nrel/CentOS-6.6-x86_64', :ram => '2048', :cpus => '2', :desc => 'Centos 6.6 - Content Server - Master of Puppets'},
 ]
 
 Vagrant.configure("2") do |config|
