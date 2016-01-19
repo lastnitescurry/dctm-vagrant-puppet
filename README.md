@@ -2,6 +2,15 @@
 Documentum developer stack split across 3 servers built with vagrant, hosted in Oracle Virtual Box and provisioned with puppet
 
 ## References
+### Documentum
+
++ [(Unofficial) D7.2 Developer Edition](https://community.emc.com/people/aldago-zF7Lc/blog/2015/02/18/unofficial-d72-developer-edition)
++ [(Unofficial) D7.1 Developer Edition](https://community.emc.com/people/aldago-zF7Lc/blog/2014/01/30/unofficial-d71-developer-edition)
+
++ [(Official) D7.2 Developer Edition](https://community.emc.com/community/edn/documentum/blog/2015/11/21/documentum-72-developer-edition)
++ [(Official) D7.1 Developer Edition] (https://community.emc.com/community/edn/documentum/blog/2014/03/20/new-documentum-developer-edition-meets-open-source)
+
+### Puppet
 
 + [deep_merge gem install](http://guides.rubygems.org/rubygems-basics/#installing-gems)
 
