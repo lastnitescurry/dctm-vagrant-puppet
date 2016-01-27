@@ -14,6 +14,10 @@ Documentum developer stack split across 3 servers built with vagrant, hosted in 
 
 + [deep_merge gem install](http://guides.rubygems.org/rubygems-basics/#installing-gems)
 
+### Documentum
+
++ [JMS High Availablity Configuration pdf](https://uk.emc.com/collateral/white-papers/h12673-wp-pdf-documentum-java-method-server-high-availablity-configuration.pdf)
+
 ### Oracle Database XE 11.2
 
 + [install_oracle_11g_xe_on](http://www.davidghedini.com/pg/entry/install_oracle_11g_xe_on)
