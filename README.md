@@ -8,7 +8,7 @@ Documentum developer stack split across 3 servers built with vagrant, hosted in 
 + [(Unofficial) D7.1 Developer Edition](https://community.emc.com/people/aldago-zF7Lc/blog/2014/01/30/unofficial-d71-developer-edition)
 
 + [(Official) D7.2 Developer Edition](https://community.emc.com/community/edn/documentum/blog/2015/11/21/documentum-72-developer-edition)
-+ [(Official) D7.1 Developer Edition] (https://community.emc.com/community/edn/documentum/blog/2014/03/20/new-documentum-developer-edition-meets-open-source)
++ [(Official) D7.1 Developer Edition](https://community.emc.com/community/edn/documentum/blog/2014/03/20/new-documentum-developer-edition-meets-open-source)
 
 ### Puppet
 
@@ -17,6 +17,13 @@ Documentum developer stack split across 3 servers built with vagrant, hosted in 
 ### Documentum
 
 + [JMS High Availablity Configuration pdf](https://uk.emc.com/collateral/white-papers/h12673-wp-pdf-documentum-java-method-server-high-availablity-configuration.pdf)
+
+### Documentum and Docker
+
++ Andreys [scripts and ideas](https://github.com/andreybpanfilov/dctm/tree/master/docker) are awesome, the [Silent installation and Documentum](http://blog.documentum.pro/2014/08/09/docker-and-documentum-part-ii/) section of this posting was a great starter for a lot of this work
++ [Documentum xCP running in Docker containers](https://github.com/jppop/dctm-docker)
+
+
 
 ### Oracle Database XE 11.2
 
@@ -40,6 +47,9 @@ Documentum developer stack split across 3 servers built with vagrant, hosted in 
 + [DA - quick check test link, version.properties](http://127.0.0.1:8081/da/version.properties)
 + [DA](http://127.0.0.1:8081/da)
 
+
+### 
++ [DFC 7x and Java 8 are not compatible](https://community.emc.com/message/889230)
 
 Introduction
 ==============

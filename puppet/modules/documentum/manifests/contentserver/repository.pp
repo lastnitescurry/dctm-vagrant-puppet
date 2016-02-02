@@ -47,7 +47,7 @@ class documentum::contentserver::repository() {
     group       => dmadmin,
     logoutput   => true,
     timeout     => 3000,
-#    notify      => Exec["repository-create-log"],
+    notify      => File["dfc.properties"],
   }
   
 #  exec { "repository-create-log":
@@ -57,4 +57,11 @@ class documentum::contentserver::repository() {
 #    logoutput   => true,
 #  }
   
+  file { 'dfc.properties':
+    ensure    => file,
+    path      => '/vagrant/repositorydata/dfc.properties',
+    owner     => dmadmin,
+    group     => dmadmin,
+    source    => '/u01/app/documentum/shared/config/dfc.properties',
+  }
 }

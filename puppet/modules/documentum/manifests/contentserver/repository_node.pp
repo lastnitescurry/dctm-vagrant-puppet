@@ -27,12 +27,20 @@ class documentum::contentserver::repository_node() {
     owner     => dmadmin,
     group     => dmadmin,
   }
+  file { 'dfc.properties.from.master':
+    ensure    => file,
+    path      => '/u01/app/documentum/shared/config/dfc.properties',
+    owner     => dmadmin,
+    group     => dmadmin,
+    source    => '/vagrant/repositorydata/dfc.properties',
+  }
   
   exec { "repository-create":
     command     => "${installer}/dm_launch_cfs_server_config_program.sh -f /home/dmadmin/sig/repository/repository_node.properties -r /home/dmadmin/sig/repository/response_node.properties -i Silent",
     cwd         => $installer,
     require     => [File["repository-response"],
                     File["repository-data-dir"],
+                    File["dfc.properties.from.master"],
                     Group["dmadmin"],
                     User["dmadmin"]],
     environment => ["HOME=/home/dmadmin",
@@ -42,14 +50,14 @@ class documentum::contentserver::repository_node() {
                     "ORACLE_HOME=/u01/app/oracle/product/11.2.0/xe",
                     "ORACLE_SID=XE",
                     ],
-    creates     => "${documentum_data}/dba/dm_shutdown_farrengold",
+    creates     => "${documentum_data}/dba/dm_shutdown_farrengold_farrengold",
     user        => dmadmin,
     group       => dmadmin,
     logoutput   => true,
     timeout     => 3000,
 #    notify      => Exec["repository-create-log"],
   }
-  
+  # /u01/app/documentum/dba/config/farrengold
 #  exec { "repository-create-log":
 #    command     => "/bin/cat ${installer}/log/install.log",
 #    cwd         => $installer,
