@@ -16,13 +16,20 @@
 # https://github.com/NREL/vagrant-boxes
 # https://atlas.hashicorp.com/nrel/boxes/CentOS-6.6-x86_64
 #
+# GUI boxes --- 
+# https://atlas.hashicorp.com/boxes/search?utf8=%E2%9C%93&sort=&provider=virtualbox&q=linux+mint
+# https://atlas.hashicorp.com/npalm/boxes/mint17-amd64-cinnamon
+# https://atlas.hashicorp.com/iluvatar/boxes/linuxmint-17.3
+#
 domain   = 'farrengold.ie'
 
 nodes = [
- { :gport => '8080', :hport => '8080',  :hostname => 'database',  :ip => '192.168.100.10', :box => 'nrel/CentOS-6.7-x86_64', :ram => '2048', :cpus => '2', :desc => 'Centos 6.6 - Database Server'},
- { :gport => '8080', :hport => '8081',  :hostname => 'appsservr', :ip => '192.168.100.20', :box => 'nrel/CentOS-6.7-x86_64', :ram => '1024', :cpus => '1', :desc => 'Centos 6.7 - Application Server'},
- { :gport => '9080', :hport => '19080', :hostname => 'csmaster',  :ip => '192.168.100.30', :box => 'nrel/CentOS-6.6-x86_64', :ram => '2048', :cpus => '2', :desc => 'Centos 6.6 - Content Server - Master of Puppets'},
- { :gport => '9080', :hport => '29080', :hostname => 'csnode',    :ip => '192.168.100.31', :box => 'nrel/CentOS-6.6-x86_64', :ram => '2048', :cpus => '2', :desc => 'Centos 6.6 - Content Server'},
+#  { :gport => '8080', :hport => '18080', :hostname => 'client',    :ip => '192.168.100.11', :box => 'npalm/mint17-amd64-cinnamon', :ram => '2048', :cpus => '2', :desc => 'npalm/mint17-amd64-cinnamon'},
+  { :gport => '8080', :hport => '8080',  :hostname => 'database',  :ip => '192.168.100.10', :box => 'nrel/CentOS-6.7-x86_64', :ram => '2048', :cpus => '2', :desc => 'Centos 6.6 - Database Server'},
+  { :gport => '8080', :hport => '8081',  :hostname => 'appsservr', :ip => '192.168.100.20', :box => 'nrel/CentOS-6.7-x86_64', :ram => '1024', :cpus => '1', :desc => 'Centos 6.7 - Application Server'},
+  { :gport => '9080', :hport => '19080', :hostname => 'csmaster',  :ip => '192.168.100.30', :box => 'nrel/CentOS-6.6-x86_64', :ram => '2048', :cpus => '2', :desc => 'Centos 6.6 - Content Server - Master of Puppets'},
+  { :gport => '9080', :hport => '29080', :hostname => 'csnode',    :ip => '192.168.100.31', :box => 'nrel/CentOS-6.6-x86_64', :ram => '2048', :cpus => '2', :desc => 'Centos 6.6 - Content Server - EMC node creation script'},
+  { :gport => '9080', :hport => '39080', :hostname => 'csmanual',  :ip => '192.168.100.32', :box => 'nrel/CentOS-6.6-x86_64', :ram => '2048', :cpus => '2', :desc => 'Centos 6.6 - Content Server - manual node'},
 ]
 
 Vagrant.configure("2") do |config|

@@ -39,13 +39,17 @@ class documentum::contentserver::docbroker() {
     group       => dmadmin,
     logoutput   => true,
     timeout     => 3000,
-#    notify      => Exec["docbroker-creation-log"],
+    notify      => [Exec [ "b-install.log"], Exec [ "b-dmadmin.ServerConfigurator.log"]]
   }
   
-#  exec { "docbroker-creation-log":
-#    command     => "/bin/cat ${installer}/log/install.log",
-#    cwd         => $installer,
-#    require     => Exec["docbroker-create"],
-#    logoutput   => true,
-#  }
+  exec { "b-install.log":
+    command     => "/bin/cat ${installer}/logs/install.log",
+    cwd         => $installer,
+    logoutput   => true,
+  }
+  exec { "b-dmadmin.ServerConfigurator.log":
+    command     => "/bin/cat ${installer}/dmadmin.ServerConfigurator.log",
+    cwd         => $installer,
+    logoutput   => true,
+  }
 }

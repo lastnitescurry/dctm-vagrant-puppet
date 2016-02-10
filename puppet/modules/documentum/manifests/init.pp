@@ -19,11 +19,13 @@ class documentum {
   include documentum::contentserver::roottask
   include documentum::contentserver::docbroker
   include documentum::contentserver::repository
+  include documentum::contentserver::captureconfigs
 
   File ['/u01/app/documentum/shared']               ->
   Class [ 'documentum::contentserver::server' ]     ->
   Class [ 'documentum::contentserver::patch' ]      ->
   Class [ 'documentum::contentserver::roottask' ]   ->
   Class [ 'documentum::contentserver::docbroker' ]  ->
-  Class [ 'documentum::contentserver::repository' ]
+  Class [ 'documentum::contentserver::repository' ] ->
+  Class [ 'documentum::contentserver::captureconfigs' ]
 }

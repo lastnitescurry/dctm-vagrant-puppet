@@ -1,6 +1,10 @@
 ---
 
 hosts:
+  client:
+    ensure:   present
+    ip:       192.168.100.11
+    comment:  Centos 6.6 - Database Server
   database:
     ensure:   present
     ip:       192.168.100.10
@@ -17,6 +21,10 @@ hosts:
     ensure:   present
     ip:       192.168.100.31
     comment:  Centos 6.6 - Content Server
+  csmanual:
+    ensure:   present
+    ip:       192.168.100.32
+    comment:  Centos 6.6 - Content Server - old school, hand cranked
 
 # https://forge.puppetlabs.com/ccin2p3/etc_services/readme
 etc_services:
@@ -91,8 +99,8 @@ packages:
     ensure:     installed
   flex:
     ensure:     installed
-  git:
-    ensure:     installed
+#  git:
+#    ensure:     installed
   unzip:
     ensure:     installed
 #  jdk1.8.0_65:

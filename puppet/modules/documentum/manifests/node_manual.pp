@@ -6,7 +6,7 @@
 # http://theruddyduck.typepad.com/theruddyduck/2013/11/using-puppet-to-configure-users-groups-and-passwords-for-cloudera-manager.html
 # http://stackoverflow.com/questions/19024134/calling-puppet-defined-resource-with-multiple-parameters-multiple-times
 
-class documentum::node {
+class documentum::node_manual {
   file { '/home/dmadmin/.bashrc':
       owner => 'dmadmin',
       group => 'dmadmin',
@@ -18,19 +18,10 @@ class documentum::node {
   include documentum::contentserver::patch
   include documentum::contentserver::roottask
   include documentum::contentserver::docbroker
-  include documentum::contentserver::repository_node
-#  include documentum::contentserver::captureconfigs
-
+  
   File ['/u01/app/documentum/shared']               ->
   Class [ 'documentum::contentserver::server' ]     ->
   Class [ 'documentum::contentserver::patch' ]      ->
   Class [ 'documentum::contentserver::roottask' ]   ->
-  Class [ 'documentum::contentserver::docbroker' ]  ->
-  Class [ 'documentum::contentserver::repository_node' ]  ->
-  class { 'documentum::contentserver::captureconfigs' :
-    capture_dir => 'csnode',
-    repo_start  => 'dm_start_farrengold_farrengold',
-    repo_stop   => 'dm_shutdown_farrengold_farrengold',
-    server_ini  => 'server_csnode_farrengold.ini',
-  }
+  Class [ 'documentum::contentserver::docbroker' ]  
 }

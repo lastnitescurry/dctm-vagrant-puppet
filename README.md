@@ -1,44 +1,8 @@
-# dctm-vagrant-puppet
-Documentum developer stack split across 3 servers built with vagrant, hosted in Oracle Virtual Box and provisioned with puppet
+#Introduction
 
-## References
-### Documentum
-
-+ [(Unofficial) D7.2 Developer Edition](https://community.emc.com/people/aldago-zF7Lc/blog/2015/02/18/unofficial-d72-developer-edition)
-+ [(Unofficial) D7.1 Developer Edition](https://community.emc.com/people/aldago-zF7Lc/blog/2014/01/30/unofficial-d71-developer-edition)
-
-+ [(Official) D7.2 Developer Edition](https://community.emc.com/community/edn/documentum/blog/2015/11/21/documentum-72-developer-edition)
-+ [(Official) D7.1 Developer Edition](https://community.emc.com/community/edn/documentum/blog/2014/03/20/new-documentum-developer-edition-meets-open-source)
-
-### Puppet
-
-+ [deep_merge gem install](http://guides.rubygems.org/rubygems-basics/#installing-gems)
-
-### Documentum
-
-+ [JMS High Availablity Configuration pdf](https://uk.emc.com/collateral/white-papers/h12673-wp-pdf-documentum-java-method-server-high-availablity-configuration.pdf)
-
-### Documentum and Docker
-
-+ Andreys [scripts and ideas](https://github.com/andreybpanfilov/dctm/tree/master/docker) are awesome, the [Silent installation and Documentum](http://blog.documentum.pro/2014/08/09/docker-and-documentum-part-ii/) section of this posting was a great starter for a lot of this work
-+ [Documentum xCP running in Docker containers](https://github.com/jppop/dctm-docker)
-
-
-
-### Oracle Database XE 11.2
-
-+ [install_oracle_11g_xe_on](http://www.davidghedini.com/pg/entry/install_oracle_11g_xe_on)
-+ [installing-oracle-xe-on-centos](https://mikesmithers.wordpress.com/2015/03/01/installing-oracle-xe-on-centos)
-+ [TNS Host unreachable](http://haridba7.blogspot.co.uk/2013/01/tnsdestination-host-unreachable.html)
-+ [Vagrant Centos Oracle](https://github.com/ismaild/vagrant-centos-oracle/blob/master/provisioning/oracle-xe.yml)
-
-### ELK Stack, LogStash
---------------------
-+ [Consolidating-Logs-with-Logstash](http://www.linux-magazine.com/Online/Features/Consolidating-Logs-with-Logstash)
-+ [elk-3-things-i-wish-id-known](http://blog.scottlogic.com/2014/12/19/elk-3-things-i-wish-id-known.html)
++ Multiple Documentum Content Server environment split across 3 servers built with vagrant, hosted in Oracle Virtual Box and provisioned with puppet
 
 ## Provisioned Application URLS
---------------------
 
 ### Oracle XE Server
 + [Oracle XE](http://127.0.0.1:8080/apex/f?p=4950:1)
@@ -47,12 +11,44 @@ Documentum developer stack split across 3 servers built with vagrant, hosted in 
 + [DA - quick check test link, version.properties](http://127.0.0.1:8081/da/version.properties)
 + [DA](http://127.0.0.1:8081/da)
 
+--------------------
+# References
+## Documentum
 
-### 
++ [(Unofficial) D7.2 Developer Edition](https://community.emc.com/people/aldago-zF7Lc/blog/2015/02/18/unofficial-d72-developer-edition)
++ [(Unofficial) D7.1 Developer Edition](https://community.emc.com/people/aldago-zF7Lc/blog/2014/01/30/unofficial-d71-developer-edition)
+
++ [(Official) D7.2 Developer Edition](https://community.emc.com/community/edn/documentum/blog/2015/11/21/documentum-72-developer-edition)
++ [(Official) D7.1 Developer Edition](https://community.emc.com/community/edn/documentum/blog/2014/03/20/new-documentum-developer-edition-meets-open-source)
+
+## Puppet
+
++ [deep_merge gem install](http://guides.rubygems.org/rubygems-basics/#installing-gems)
+
+## Vagrant
+
++ [Vagrantfile driven from config YAML file](https://github.com/openstack-dev/devstack-vagrant)
++ [Vagrant tag on vmware](http://blogs.vmware.com/openstack/tag/vagrant/)
+
+## Documentum
+
++ [JMS High Availablity Configuration pdf](https://uk.emc.com/collateral/white-papers/h12673-wp-pdf-documentum-java-method-server-high-availablity-configuration.pdf)
 + [DFC 7x and Java 8 are not compatible](https://community.emc.com/message/889230)
 
-Introduction
-==============
+## Documentum and Docker
 
-My Vagrant use cases
++ Andreys [scripts and ideas](https://github.com/andreybpanfilov/dctm/tree/master/docker) are awesome, the [Silent installation and Documentum](http://blog.documentum.pro/2014/08/09/docker-and-documentum-part-ii/) section of this posting was a great starter for a lot of this work
++ [Documentum xCP running in Docker containers](https://github.com/jppop/dctm-docker)
+
+## Oracle Database XE 11.2
+
++ [install_oracle_11g_xe_on](http://www.davidghedini.com/pg/entry/install_oracle_11g_xe_on)
++ [installing-oracle-xe-on-centos](https://mikesmithers.wordpress.com/2015/03/01/installing-oracle-xe-on-centos)
++ [TNS Host unreachable](http://haridba7.blogspot.co.uk/2013/01/tnsdestination-host-unreachable.html)
++ [Vagrant Centos Oracle](https://github.com/ismaild/vagrant-centos-oracle/blob/master/provisioning/oracle-xe.yml)
+
+## ELK Stack, LogStash
 --------------------
++ [Consolidating-Logs-with-Logstash](http://www.linux-magazine.com/Online/Features/Consolidating-Logs-with-Logstash)
++ [elk-3-things-i-wish-id-known](http://blog.scottlogic.com/2014/12/19/elk-3-things-i-wish-id-known.html)
+

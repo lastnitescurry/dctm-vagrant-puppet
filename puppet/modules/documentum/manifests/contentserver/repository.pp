@@ -42,20 +42,24 @@ class documentum::contentserver::repository() {
                     "ORACLE_HOME=/u01/app/oracle/product/11.2.0/xe",
                     "ORACLE_SID=XE",
                     ],
-    creates     => "${documentum_data}/farrengold",
+    creates     => "${documentum}/dba/dm_start_farrengold",
     user        => dmadmin,
     group       => dmadmin,
     logoutput   => true,
     timeout     => 3000,
-    notify      => File["dfc.properties"],
+    notify      => [File["dfc.properties"], Exec [ "r-install.log"], Exec [ "r-dmadmin.ServerConfigurator.log"]]
   }
   
-#  exec { "repository-create-log":
-#    command     => "/bin/cat ${installer}/log/install.log",
-#    cwd         => $installer,
-#    require     => Exec["repository-create"],
-#    logoutput   => true,
-#  }
+  exec { "r-install.log":
+    command     => "/bin/cat ${installer}/logs/install.log",
+    cwd         => $installer,
+    logoutput   => true,
+  }
+  exec { "r-dmadmin.ServerConfigurator.log":
+    command     => "/bin/cat ${installer}/dmadmin.ServerConfigurator.log",
+    cwd         => $installer,
+    logoutput   => true,
+  }
   
   file { 'dfc.properties':
     ensure    => file,
