@@ -4,8 +4,9 @@ class documentum::contentserver::captureconfigs(
   $documentum_data  = '/vagrant/repositorydata',
   $capture_dir      = 'csmaster',
   $repo_start       = 'dm_start_farrengold',
-  $repo_stop        = 'dm_shutdown_farrengold'
-  $server_ini       = 'server.ini'
+  $repo_stop        = 'dm_shutdown_farrengold',
+  $repo_log         = 'farrengold.log',
+  $server_ini       = 'server.ini',
   ) {
   
     file { 'capture-dir':
@@ -23,9 +24,14 @@ class documentum::contentserver::captureconfigs(
       source    => "/u01/app/documentum/dba/config/farrengold/${server_ini}",
       require   => File["capture-dir"]
     }
+    file { 'aek.key':
+      path      => "${documentum_data}/${capture_dir}/aek.key",
+      source    => "/u01/app/documentum/dba/secure/aek.key",
+      require   => File["capture-dir"]
+    }
     file { 'farrengold.log':
-      path      => "${documentum_data}/${capture_dir}/farrengold.log",
-      source    => '/u01/app/documentum/dba/log/farrengold.log',
+      path      => "${documentum_data}/${capture_dir}/${repo_log}",
+      source    => "/u01/app/documentum/dba/log/${repo_log}",
       require   => File["capture-dir"]
     }
     file { 'dm_start_farrengold':

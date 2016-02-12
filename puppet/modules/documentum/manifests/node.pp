@@ -19,7 +19,6 @@ class documentum::node {
   include documentum::contentserver::roottask
   include documentum::contentserver::docbroker
   include documentum::contentserver::repository_node
-#  include documentum::contentserver::captureconfigs
 
   File ['/u01/app/documentum/shared']               ->
   Class [ 'documentum::contentserver::server' ]     ->
@@ -32,5 +31,6 @@ class documentum::node {
     repo_start  => 'dm_start_farrengold_farrengold',
     repo_stop   => 'dm_shutdown_farrengold_farrengold',
     server_ini  => 'server_csnode_farrengold.ini',
+    repo_log    => 'csnode_farrengold.log',
   }
 }

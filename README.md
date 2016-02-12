@@ -11,6 +11,13 @@
 + [DA - quick check test link, version.properties](http://127.0.0.1:8081/da/version.properties)
 + [DA](http://127.0.0.1:8081/da)
 
+
+## Setup Requirements
+1. [Vagrant](https://community.emc.com/people/aldago-zF7Lc/blog/2015/02/18/unofficial-d72-developer-edition)
+1. [vagrant-vbguest plugin](https://github.com/dotless-de/vagrant-vbguest). Install command: vagrant plugin install vagrant-vbguest
+1. [Oracle Virtual Box]
+
+
 --------------------
 # References
 ## Documentum
@@ -29,6 +36,7 @@
 
 + [Vagrantfile driven from config YAML file](https://github.com/openstack-dev/devstack-vagrant)
 + [Vagrant tag on vmware](http://blogs.vmware.com/openstack/tag/vagrant/)
++ [VB Guest Plugin](https://github.com/dotless-de/vagrant-vbguest) to update virtual box additions. [Raw commands](https://gist.github.com/fernandoaleman/5083680)
 
 ## Documentum
 

@@ -22,9 +22,10 @@
 # https://atlas.hashicorp.com/iluvatar/boxes/linuxmint-17.3
 #
 domain   = 'farrengold.ie'
+nopuppet = 'client'
 
 nodes = [
-#  { :gport => '8080', :hport => '18080', :hostname => 'client',    :ip => '192.168.100.11', :box => 'npalm/mint17-amd64-cinnamon', :ram => '2048', :cpus => '2', :desc => 'npalm/mint17-amd64-cinnamon'},
+  { :gport => '8080', :hport => '18080', :hostname => 'client',    :ip => '192.168.100.11', :box => 'npalm/mint17-amd64-cinnamon', :ram => '2048', :cpus => '2', :desc => 'npalm/mint17-amd64-cinnamon'},
   { :gport => '8080', :hport => '8080',  :hostname => 'database',  :ip => '192.168.100.10', :box => 'nrel/CentOS-6.7-x86_64', :ram => '2048', :cpus => '2', :desc => 'Centos 6.6 - Database Server'},
   { :gport => '8080', :hport => '8081',  :hostname => 'appsservr', :ip => '192.168.100.20', :box => 'nrel/CentOS-6.7-x86_64', :ram => '1024', :cpus => '1', :desc => 'Centos 6.7 - Application Server'},
   { :gport => '9080', :hport => '19080', :hostname => 'csmaster',  :ip => '192.168.100.30', :box => 'nrel/CentOS-6.6-x86_64', :ram => '2048', :cpus => '2', :desc => 'Centos 6.6 - Content Server - Master of Puppets'},
@@ -33,6 +34,13 @@ nodes = [
 ]
 
 Vagrant.configure("2") do |config|
+  # Update virutal box additions
+#  config.vbguest.iso_path = "D:/Software/Oracle/VirtualBox/%{version}/VBoxGuestAdditions_%{version}.iso"
+#  config.vbguest.iso_path = "C:\Program Files\Oracle\VirtualBox\VBoxGuestAdditions.iso"
+  # do NOT download the iso file from a webserver
+  config.vbguest.no_remote = true
+  config.vbguest.no_install = true
+  
   nodes.each do |node|
     config.vm.define node[:hostname] do |nodeconfig|
       nodeconfig.vm.box = node[:box]
@@ -54,6 +62,20 @@ Vagrant.configure("2") do |config|
           "--description", desc.to_s,
           "--vram",        "256",
         ]
+      end
+
+      if 'client' != node[:hostname]
+        nodeconfig.vm.provision "shell", inline: $puppet_tooling
+        nodeconfig.vm.provision "puppet" do |puppet|
+          puppet.manifests_path     = "puppet/manifests"
+          puppet.manifest_file      = "site.pp"
+          puppet.module_path        = "puppet/modules"
+          puppet.hiera_config_path  = "puppet/hiera/hiera.yaml"
+          puppet.working_directory  = "/tmp/vagrant-puppet"
+      #    puppet.options            = "--debug --graph"
+      #    puppet.options            = "--debug"
+      #    puppet.options            = "--verbose --trace"
+        end
       end
     end
   end
@@ -77,20 +99,9 @@ Vagrant.configure("2") do |config|
   puppet module install /software/Puppet/Forge/ccin2p3-etc_services-1.0.0.tar.gz --ignore-dependencies
 SCRIPT
 
-  config.vm.provision "shell", inline: $puppet_tooling
 
   #  config.vm.provision :shell, :inline => "puppet module install /software/Puppet/Forge/puppetlabs-stdlib "
 #  config.vm.provision :shell, :inline => "puppet module install puppetlabs-tomcat"
 #  config.vm.provision :shell, :inline => ""
-    
-  config.vm.provision "puppet" do |puppet|
-    puppet.manifests_path     = "puppet/manifests"
-    puppet.manifest_file      = "site.pp"
-    puppet.module_path        = "puppet/modules"
-    puppet.hiera_config_path  = "puppet/hiera/hiera.yaml"
-    puppet.working_directory  = "/tmp/vagrant-puppet"
-#    puppet.options            = "--debug --graph"
-#    puppet.options            = "--debug"
-#    puppet.options            = "--verbose --trace"
-  end
+      
 end
