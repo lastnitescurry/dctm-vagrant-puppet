@@ -10,6 +10,7 @@
 ### Documentum
 + [DA - quick check test link, version.properties](http://127.0.0.1:8081/da/version.properties)
 + [DA](http://127.0.0.1:8081/da)
++ [DA](http://appsservr:8080/da)
 
 
 ## Setup Requirements
@@ -37,6 +38,26 @@
 + [Vagrantfile driven from config YAML file](https://github.com/openstack-dev/devstack-vagrant)
 + [Vagrant tag on vmware](http://blogs.vmware.com/openstack/tag/vagrant/)
 + [VB Guest Plugin](https://github.com/dotless-de/vagrant-vbguest) to update virtual box additions. [Raw commands](https://gist.github.com/fernandoaleman/5083680)
++ [Stock veewee boxes, modified to support Oracle XE](https://github.com/stlhrt/vagrant-boxes)
++ [How to create](https://github.com/ckan/ckan/wiki/How-to-Create-a-CentOS-Vagrant-Base-Box)
++ [Puppetlab boxes](https://github.com/puppetlabs/puppet-vagrant-boxes)
++ [VB Guest updater}(https://github.com/dotless-de/vagrant-vbguest)
++ [VMware Vagrant](http://blogs.vmware.com/openstack/tag/vagrant)
+
+### Vagrantfile examples
++ [2 node - devstack-vagrant](https://github.com/openstack-dev/devstack-vagrant/blob/master/Vagrantfile)
++ [How we use Vagrant](http://blog.lusis.org/blog/2012/12/17/how-we-vagrant)
+
+
+### Boxes
+#### Server
+
++ [NREL GitHub](https://github.com/NREL/vagrant-boxes)
++ [NREL CentOS 6.6](https://atlas.hashicorp.com/nrel/boxes/CentOS-6.6-x86_64)
+
+#### Client
++ [Linux Mint](https://atlas.hashicorp.com/boxes/search?utf8=%E2%9C%93&sort=&provider=virtualbox&q=linux+mint)
++ [Mint17 Cinnamon](https://atlas.hashicorp.com/npalm/boxes/mint17-amd64-cinnamon)
 
 ## Documentum
 
