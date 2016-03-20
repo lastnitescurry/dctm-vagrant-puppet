@@ -22,7 +22,6 @@
 # https://atlas.hashicorp.com/iluvatar/boxes/linuxmint-17.3
 #
 domain   = 'farrengold.ie'
-nopuppet = 'client'
 
 nodes = [
   { :gport => '8080', :hport => '18080', :hostname => 'client',    :ip => '192.168.100.11', :box => 'npalm/mint17-amd64-cinnamon', :ram => '2048', :cpus => '2', :desc => 'npalm/mint17-amd64-cinnamon'},
@@ -40,6 +39,13 @@ Vagrant.configure("2") do |config|
   # do NOT download the iso file from a webserver
   config.vbguest.no_remote = true
   config.vbguest.no_install = true
+
+  nopuppethosts = ""
+  nodes.each do |node|
+    nopuppethosts = nopuppethosts + "\n" + node[:ip] + "  " + node[:hostname]
+  end
+  nopuppethosts = "cat <<EOT >> /etc/hosts #{nopuppethosts}\nEOT"
+#  puts "#{nopuppethosts}"
   
   nodes.each do |node|
     config.vm.define node[:hostname] do |nodeconfig|
@@ -76,6 +82,10 @@ Vagrant.configure("2") do |config|
       #    puppet.options            = "--debug"
       #    puppet.options            = "--verbose --trace"
         end
+      else
+        nodeconfig.vm.provision :shell, :inline => "#{nopuppethosts}"
+#        nodeconfig.vm.provision :shell, :inline => "echo \"vagrant\"|passwd --stdin vagrant"
+#        nodeconfig.vm.provision :shell, :inline => "echo \"vagrant\"|passwd --stdin root"
       end
     end
   end
