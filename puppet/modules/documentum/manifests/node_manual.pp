@@ -18,10 +18,19 @@ class documentum::node_manual {
   include documentum::contentserver::patch
   include documentum::contentserver::roottask
   include documentum::contentserver::docbroker
-  
+  include documentum::contentserver::repository_node
+
   File ['/u01/app/documentum/shared']               ->
   Class [ 'documentum::contentserver::server' ]     ->
   Class [ 'documentum::contentserver::patch' ]      ->
   Class [ 'documentum::contentserver::roottask' ]   ->
-  Class [ 'documentum::contentserver::docbroker' ]  
+  Class [ 'documentum::contentserver::docbroker' ]  ->
+  Class [ 'documentum::contentserver::repository_node' ]  ->
+  class { 'documentum::contentserver::captureconfigs' :
+    capture_dir => $hostname,
+    repo_start  => 'dm_start_farrengold_farrengold',
+    repo_stop   => 'dm_shutdown_farrengold_farrengold',
+    server_ini  => "server_${hostname}_farrengold.ini",
+    repo_log    => "${hostname}_farrengold.log",
+  }
 }

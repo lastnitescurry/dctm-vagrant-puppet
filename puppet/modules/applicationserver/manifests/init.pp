@@ -37,6 +37,23 @@ class applicationserver {
     source  => 'puppet:///modules/applicationserver/web.xml',
     require => Tomcat::Instance['apache-tomcat-7.0.65'],
   }
+  file { 'setenv.sh':
+    path    => "${catalina_home}/bin/setenv.sh",
+    source  => 'puppet:///modules/applicationserver/setenv.sh',
+    require => Tomcat::Instance['apache-tomcat-7.0.65'],
+  }
+  file { 'jenkins':
+    path    => "${catalina_home}/webapps/jenkins.war",
+    source  => '/software/Jenkins/20160314/jenkins.war',
+    require => Tomcat::Instance['apache-tomcat-7.0.65'],
+  }
+  exec { "jenkins-plugins":
+    command     => "/bin/cp /software/Jenkins/20160314/*.hpi /u01/app/jenkins/plugins",
+    require     => File["jenkins"],
+    creates     => "/u01/app/jenkins/plugins/warnings.hpi",
+    user        => tomcat,
+    group       => tomcat,
+  }
   applicationserver::wdkwar { 'da':
     war_source  => '/software/Documentum/D71/da.war',
     webapps_dir => "${catalina_home}/webapps",
@@ -48,6 +65,8 @@ class applicationserver {
       File [ 'catalina.properties'],
       File [ 'context.xml'],
       File [ 'web.xml'],
+      File [ 'jenkins'],
+      Exec [ 'jenkins-plugins'],
       Applicationserver::Wdkwar[da],
     ]
   }

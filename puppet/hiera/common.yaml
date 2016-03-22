@@ -25,6 +25,10 @@ hosts:
     ensure:   present
     ip:       192.168.100.32
     comment:  Centos 6.6 - Content Server - old school, hand cranked
+  csmars:
+    ensure:   present
+    ip:       192.168.100.33
+    comment:  Centos 6.6 - Content Server - Yet another
 
 # https://forge.puppetlabs.com/ccin2p3/etc_services/readme
 etc_services:
@@ -187,6 +191,16 @@ files:
     group:      tomcat
     mode:       '775'
     target:     '/u01/app/apache-tomcat'
+  '/u01/app/jenkins':
+    ensure:     directory
+    owner:      tomcat
+    group:      tomcat
+    mode:       '775'
+  '/u01/app/jenkins/plugins':
+    ensure:     directory
+    owner:      tomcat
+    group:      tomcat
+    mode:       '775'
 
 # Oracle Client settings for Documentum Content Servers
 oracle::xe::client::db_port: '1521'

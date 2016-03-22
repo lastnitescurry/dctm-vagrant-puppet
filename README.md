@@ -12,6 +12,9 @@
 + [DA](http://127.0.0.1:8081/da)
 + [DA](http://appsservr:8080/da)
 
+### Jenkins
++ [Jenkins](http://127.0.0.1:8081/jenkins)
++ [Jenkins](http://appsservr:8080/jenkins)
 
 ## Setup Requirements
 1. [Vagrant](https://community.emc.com/people/aldago-zF7Lc/blog/2015/02/18/unofficial-d72-developer-edition)

@@ -44,6 +44,14 @@ node 'csmanual' {
   Class [ 'documentum::node_manual' ]
 }
 
+node 'csmars' {
+  include oracle::xe::client
+  include documentum::node_manual
+
+  Class [ 'oracle::xe::client' ] ->
+  Class [ 'documentum::node_manual' ]
+}
+
   node 'appsservr' {
     include applicationserver
   }
