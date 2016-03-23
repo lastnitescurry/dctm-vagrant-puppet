@@ -54,7 +54,16 @@ SERVER.USE_CERTIFICATES=false
 SERVER.KEYSTORE_FILE_NAME=server.p12
 SERVER.KEYSTORE_PASSWORD_FILE_NAME=server.pwd
 SERVER.TRUST_STORE_FILE_NAME=server-trust.p7b
+
+# Default for 71 installer
 SERVER.CIPHER_LIST=AES128-SHA
+# which results in 71 server.ini for new 71 repositories
+#SERVER.CIPHER_LIST=AES128_RSA1024_SHA256
+# but need 71 server.ini for upgraded from 65 repositories
+#SERVER.CIPHER_LIST=3DES_RSA1024_SHA256
+# but invalid :(
+#SERVER.CIPHER_LIST=3DES-SHA
+
 SERVER.DFC_SSL_TRUSTSTORE=<%=@documentum%>/dba/secure/dfc.keystore
 SERVER.DFC_SSL_TRUSTSTORE_PASSWORD=
 SERVER.DFC_SSL_USE_EXISTING_TRUSTSTORE=false

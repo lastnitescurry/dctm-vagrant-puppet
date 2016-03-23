@@ -52,10 +52,10 @@ node 'csmars' {
   Class [ 'documentum::node_manual' ]
 }
 
-  node 'appsservr' {
-    include applicationserver
-  }
+node 'appsservr' {
+  include applicationserver
+}
 
-  node 'client' {
-
-  }
+node 'jenkins' {
+  include jenkins
+}

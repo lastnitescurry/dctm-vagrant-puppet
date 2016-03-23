@@ -4,7 +4,7 @@ hosts:
   client:
     ensure:   present
     ip:       192.168.100.11
-    comment:  Centos 6.6 - Database Server
+    comment:  Minty client
   database:
     ensure:   present
     ip:       192.168.100.10
@@ -13,6 +13,10 @@ hosts:
     ensure:   present
     ip:       192.168.100.20
     comment:  Centos 6.6 - Application Server
+  jenkins:
+    ensure:   present
+    ip:       192.168.100.21
+    comment:  Centos 6.6 - Jenkins Server
   csmaster:
     ensure:   present
     ip:       192.168.100.30
@@ -76,10 +80,10 @@ users:
     shell:      '/bin/bash'
     password:   "$1$uwPiRsox$GEe9mUGEav92rx4ooq6Nf." # vagrant
     gid:        dmadmin
-    groups:     
+    groups:
                 - dba
                 - wheel
-    require:    
+    require:
                 - Group[dba]
                 - Group[wheel]
   tomcat:
@@ -89,10 +93,10 @@ users:
     shell:      '/bin/bash'
     password:   "$1$uwPiRsox$GEe9mUGEav92rx4ooq6Nf." # vagrant
     gid:        tomcat
-    groups:     
+    groups:
                 - dmadmin
                 - wheel
-    require:    
+    require:
                 - Group[dmadmin]
                 - Group[wheel]
 
