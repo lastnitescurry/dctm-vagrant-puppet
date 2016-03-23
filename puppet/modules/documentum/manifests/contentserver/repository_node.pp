@@ -11,7 +11,7 @@ class documentum::contentserver::repository_node() {
   $docbroker_port  = '1489'
   $docbroker_name  = 'Docbroker'
   $docbroker_host  = $hostname
-  $documentum_data = '/vagrant/repositorydata'
+  $documentum_data = '/vagrant/repositorydata/farrengold'
 
   # template(<FILE REFERENCE>, [<ADDITIONAL FILES>, ...])
   file { 'repository-response':
@@ -50,7 +50,7 @@ class documentum::contentserver::repository_node() {
                     "ORACLE_HOME=/u01/app/oracle/product/11.2.0/xe",
                     "ORACLE_SID=XE",
                     ],
-    creates     => "${documentum_data}/dba/dm_shutdown_farrengold_farrengold",
+    creates     => "${documentum}/dba/dm_shutdown_farrengold_farrengold",
     user        => dmadmin,
     group       => dmadmin,
     logoutput   => true,
@@ -65,4 +65,46 @@ class documentum::contentserver::repository_node() {
 #    logoutput   => true,
 #  }
   
+  # Convert Node from file serving content server to handle user sessions also 
+  exec { "content-server-stop":
+    command     => "${documentum}/dba/dm_shutdown_farrengold_farrengold",
+    cwd         => "${documentum}/dba",
+    require     => Exec["repository-create"],
+    environment => ["HOME=/home/dmadmin",
+                    "DOCUMENTUM=${documentum}",
+                    "DOCUMENTUM_SHARED=${documentum}/shared",
+                    "DM_HOME=${documentum}/product/${version}",
+                    "ORACLE_HOME=/u01/app/oracle/product/11.2.0/xe",
+                    "ORACLE_SID=XE",
+                    ],
+    user        => dmadmin,
+    group       => dmadmin,
+    logoutput   => true,
+    timeout     => 3000,
+  }
+  exec { "content-server-convert-to-user-session-handler":
+    command     => "/bin/sed -in-place '/proximity=90/d' server_${hostname}_farrengold.ini",
+    cwd         => "${documentum}/dba/config/farrengold",
+    require     => Exec["content-server-stop"],
+    user        => dmadmin,
+    group       => dmadmin,
+    logoutput   => true,
+    timeout     => 3000,
+  }
+  exec { "content-server-start":
+    command     => "${documentum}/dba/dm_start_farrengold_farrengold",
+    cwd         => "${documentum}/dba",
+    require     => Exec["content-server-convert-to-user-session-handler"],
+    environment => ["HOME=/home/dmadmin",
+                    "DOCUMENTUM=${documentum}",
+                    "DOCUMENTUM_SHARED=${documentum}/shared",
+                    "DM_HOME=${documentum}/product/${version}",
+                    "ORACLE_HOME=/u01/app/oracle/product/11.2.0/xe",
+                    "ORACLE_SID=XE",
+                    ],
+    user        => dmadmin,
+    group       => dmadmin,
+    logoutput   => true,
+    timeout     => 3000,
+  }
 }
