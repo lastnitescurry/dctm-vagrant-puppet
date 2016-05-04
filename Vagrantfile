@@ -39,8 +39,8 @@ Vagrant.configure("2") do |config|
 #  config.vbguest.iso_path = "D:/Software/Oracle/VirtualBox/%{version}/VBoxGuestAdditions_%{version}.iso"
 #  config.vbguest.iso_path = "C:\Program Files\Oracle\VirtualBox\VBoxGuestAdditions.iso"
   # do NOT download the iso file from a webserver
-  config.vbguest.no_remote = true
-  config.vbguest.no_install = true
+  #config.vbguest.no_remote = true
+  #config.vbguest.no_install = true
 
   nopuppethosts = ""
   nodes.each do |node|
