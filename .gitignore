@@ -34,6 +34,8 @@ build/
 # unless supporting rvm < 1.11.0 or doing something fancy, ignore this:
 .rvmrc
 
-# 
+#
 /apache-tomcat-7.0.65/
+/2Node
+/repositorydata*
 .vagrant
