@@ -20,11 +20,12 @@
 # https://atlas.hashicorp.com/boxes/search?utf8=%E2%9C%93&sort=&provider=virtualbox&q=linux+mint
 # https://atlas.hashicorp.com/npalm/boxes/mint17-amd64-cinnamon
 # https://atlas.hashicorp.com/iluvatar/boxes/linuxmint-17.3
+# https://vagrantcloud.com/boxes/search?provider=virtualbox&q=centos+desktop+&sort=&utf8=%E2%9C%93
 #
 domain   = 'farrengold.ie'
 
-nodes = [
-#  { :gport => '8080', :hport => '18080', :hostname => 'client',    :ip => '192.168.100.11', :box => 'npalm/mint17-amd64-cinnamon', :ram => '2048', :cpus => '1', :desc => 'npalm/mint17-amd64-cinnamon'},
+nodes = [  
+  { :gport => '8080', :hport => '18080', :hostname => 'guiclient',    :ip => '192.168.100.11', :box => 'npalm/mint17-amd64-cinnamon', :ram => '2048', :cpus => '1', :desc => 'npalm/mint17-amd64-cinnamon'},
   { :gport => '8080', :hport => '8080',  :hostname => 'database',  :ip => '192.168.100.10', :box => 'nrel/CentOS-6.7-x86_64', :ram => '2048', :cpus => '1', :desc => 'Centos 6.6 - Database Server'},
 #  { :gport => '8080', :hport => '8081',  :hostname => 'appsservr', :ip => '192.168.100.20', :box => 'nrel/CentOS-6.7-x86_64', :ram => '2048', :cpus => '1', :desc => 'Centos 6.7 - Application Server'},
 #  { :gport => '8080', :hport => '8082',  :hostname => 'jenkins',   :ip => '192.168.100.21', :box => 'nrel/CentOS-6.7-x86_64', :ram => '2048', :cpus => '1', :desc => 'Centos 6.7 - Jenkins Server'},
@@ -72,7 +73,7 @@ Vagrant.configure("2") do |config|
         ]
       end
 
-      if 'client' != node[:hostname]
+      if 'guiclient' != node[:hostname]
         nodeconfig.vm.provision "shell", inline: $puppet_tooling
         nodeconfig.vm.provision "puppet" do |puppet|
           puppet.manifests_path     = "puppet/manifests"
