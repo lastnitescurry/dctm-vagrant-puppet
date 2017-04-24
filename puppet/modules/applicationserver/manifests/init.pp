@@ -19,7 +19,7 @@ class applicationserver {
   tomcat::instance { 'apache-tomcat-7.0.65':
     catalina_base  => $catalina_home,
     catalina_home  => $catalina_home,
-    source_url     => '/software/Apache/Tomcat/apache-tomcat-7.0.65.tar.gz',
+    source_url     => '/software/Apache/Tomcat/7.0/apache-tomcat-7.0.65.tar.gz',
   }
   # Configuration files for Documentum Applications
   file { 'catalina.properties':
@@ -42,18 +42,18 @@ class applicationserver {
     source  => 'puppet:///modules/applicationserver/setenv.sh',
     require => Tomcat::Instance['apache-tomcat-7.0.65'],
   }
-  file { 'jenkins':
-    path    => "${catalina_home}/webapps/jenkins.war",
-    source  => '/software/Jenkins/20160314/jenkins.war',
-    require => Tomcat::Instance['apache-tomcat-7.0.65'],
-  }
-  exec { "jenkins-plugins":
-    command     => "/bin/cp /software/Jenkins/20160314/*.hpi /u01/app/jenkins/plugins",
-    require     => File["jenkins"],
-    creates     => "/u01/app/jenkins/plugins/warnings.hpi",
-    user        => tomcat,
-    group       => tomcat,
-  }
+#  file { 'jenkins':
+#    path    => "${catalina_home}/webapps/jenkins.war",
+#    source  => '/software/Jenkins/2.44/jenkins.war',
+#    require => Tomcat::Instance['apache-tomcat-7.0.65'],
+#  }
+#  exec { "jenkins-plugins":
+#    command     => "/bin/cp /software/Jenkins/20170421/*.jpi /u01/app/jenkins/plugins",
+#    require     => File["jenkins"],
+#    creates     => "/u01/app/jenkins/plugins/subversion.jpi",
+#    user        => tomcat,
+#    group       => tomcat,
+#  }
   applicationserver::wdkwar { 'da':
     war_source  => '/software/Documentum/D71/da.war',
     webapps_dir => "${catalina_home}/webapps",
@@ -65,8 +65,8 @@ class applicationserver {
       File [ 'catalina.properties'],
       File [ 'context.xml'],
       File [ 'web.xml'],
-      File [ 'jenkins'],
-      Exec [ 'jenkins-plugins'],
+#      File [ 'jenkins'],
+#      Exec [ 'jenkins-plugins'],
       Applicationserver::Wdkwar[da],
     ]
   }
