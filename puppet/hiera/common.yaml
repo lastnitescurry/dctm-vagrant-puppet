@@ -119,7 +119,7 @@ packages:
   jdk-7u79-linux-x64:
     ensure:     installed
     provider:   rpm
-    source:     '/software/Oracle/Java/jdk-7u79-linux-x64.rpm'
+    source:     '/software/Oracle/Java/1.7/jdk-7u79-linux-x64.rpm'
 
 services:
   iptables:
