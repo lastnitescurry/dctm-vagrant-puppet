@@ -25,12 +25,12 @@
 domain   = 'farrengold.ie'
 
 nodes = [  
-  { :gport => '8080', :hport => '18080', :hostname => 'guiclient',    :ip => '192.168.100.11', :box => 'npalm/mint17-amd64-cinnamon', :ram => '2048', :cpus => '1', :desc => 'npalm/mint17-amd64-cinnamon'},
+#  { :gport => '8080', :hport => '18080', :hostname => 'guiclient',    :ip => '192.168.100.11', :box => 'npalm/mint17-amd64-cinnamon', :ram => '2048', :cpus => '1', :desc => 'npalm/mint17-amd64-cinnamon'},
   { :gport => '8080', :hport => '8080',  :hostname => 'database',  :ip => '192.168.100.10', :box => 'nrel/CentOS-6.7-x86_64', :ram => '2048', :cpus => '1', :desc => 'Centos 6.6 - Database Server'},
-#  { :gport => '8080', :hport => '8081',  :hostname => 'appsservr', :ip => '192.168.100.20', :box => 'nrel/CentOS-6.7-x86_64', :ram => '2048', :cpus => '1', :desc => 'Centos 6.7 - Application Server'},
+  { :gport => '8080', :hport => '8081',  :hostname => 'appsservr', :ip => '192.168.100.20', :box => 'nrel/CentOS-6.7-x86_64', :ram => '2048', :cpus => '1', :desc => 'Centos 6.7 - Application Server'},
 #  { :gport => '8080', :hport => '8082',  :hostname => 'jenkins',   :ip => '192.168.100.21', :box => 'nrel/CentOS-6.7-x86_64', :ram => '2048', :cpus => '1', :desc => 'Centos 6.7 - Jenkins Server'},
   { :gport => '9080', :hport => '19080', :hostname => 'csmaster',  :ip => '192.168.100.30', :box => 'nrel/CentOS-6.6-x86_64', :ram => '2048', :cpus => '1', :desc => 'Centos 6.6 - Content Server - Master of Puppets'},
-  { :gport => '9080', :hport => '29080', :hostname => 'csnode',    :ip => '192.168.100.31', :box => 'nrel/CentOS-6.6-x86_64', :ram => '2048', :cpus => '1', :desc => 'Centos 6.6 - Content Server - EMC node creation script'},
+#  { :gport => '9080', :hport => '29080', :hostname => 'csnode',    :ip => '192.168.100.31', :box => 'nrel/CentOS-6.6-x86_64', :ram => '2048', :cpus => '1', :desc => 'Centos 6.6 - Content Server - EMC node creation script'},
 #  { :gport => '9080', :hport => '39080', :hostname => 'csmanual',  :ip => '192.168.100.32', :box => 'nrel/CentOS-6.6-x86_64', :ram => '2048', :cpus => '1', :desc => 'Centos 6.6 - Content Server - manual node'},
 #  { :gport => '9080', :hport => '49080', :hostname => 'csmars',    :ip => '192.168.100.33', :box => 'nrel/CentOS-6.6-x86_64', :ram => '2048', :cpus => '1', :desc => 'Centos 6.6 - Content Server - yet another'},
 ]
