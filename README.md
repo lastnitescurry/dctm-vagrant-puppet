@@ -1,6 +1,6 @@
 #Introduction
 
-+ Multiple Documentum Content Server environment split across 3 servers built with vagrant, hosted in Oracle Virtual Box and provisioned with puppet
+Documentum development environment with separate servers for database, application server and content servers. Vagrant controls Oracle Virtual Box and provisioned is done with Puppet
 
 ## Provisioned Application URLS
 
